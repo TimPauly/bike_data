@@ -12,6 +12,7 @@ Original file is located at
 
 import requests
 import csv
+import os
 import time
 from datetime import datetime
 
