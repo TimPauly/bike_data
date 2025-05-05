@@ -1,0 +1,33 @@
+name: Five Minute Bike Tracker
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Alle 5 Minuten (UTC)
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository klonen
+        uses: actions/checkout@v3
+
+      - name: Python einrichten
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Abhängigkeiten installieren
+        run: pip install requests
+
+      - name: Bike Tracker ausführen
+        run: python bike_tracker.py
+
+      - name: Git-Änderungen committen und pushen
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/*.csv
+          git commit -m "Automatische Bike-Daten (alle 5 Minuten)" || echo "Keine Änderungen"
+          git push
