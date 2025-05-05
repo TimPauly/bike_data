@@ -1,3 +1,13 @@
+from datetime import datetime
+import sys
+
+now = datetime.now()
+
+# Nur fortfahren, wenn Minute durch 5 teilbar ist
+if now.minute % 5 != 0:
+    print(f"⏱️ Abgebrochen – Nicht zur 5-Minuten-Zeit: {now.strftime('%H:%M')}")
+    sys.exit()
+    
 # -*- coding: utf-8 -*-
 """bike_tracker.ipynb
 
