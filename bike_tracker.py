@@ -16,9 +16,8 @@ import os
 import time
 from datetime import datetime
 
-# Erzeuge Datei-Pfad mit Tagesdatum
-today_str = datetime.now().strftime("%Y-%m-%d")
-FILENAME = f"data/bike_data_{today_str}.csv"
+FILENAME = f"data/bike_data_{datetime.now().date()}.csv"
+os.makedirs("data", exist_ok=True)
 
 # Header nur, wenn Datei nicht existiert
 write_header = not os.path.exists(FILENAME)
