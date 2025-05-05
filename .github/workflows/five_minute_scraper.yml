@@ -2,7 +2,7 @@ name: Five Minute Bike Tracker
 
 on:
   schedule:
-    - cron: '*/3 * * * *'  # Alle 3 Minuten
+    - cron: '*/5 * * * *'  # Alle 5 Minuten
   workflow_dispatch:
 
 jobs:
